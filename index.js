@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://db_user2:abRPnA9nJBEy2ZIF@cluster0.jwrz65q.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jwrz65q.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -34,3 +34,6 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log("listening from", port);
 });
+
+// live ApI
+// https://immense-taiga-40483.herokuapp.com/
